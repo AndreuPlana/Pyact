@@ -18,12 +18,12 @@ db = mongo.db.pythonreact
 @app.route('/users', methods=['POST'])
 def createUser():
   print(request.json)
-  id = db.insert({
+  id = db.insert({ 
     'name': request.json['name'],
     'email': request.json['email'],
     'password': request.json['password']
   })
-  return 'ok'
+  return jsonify(str(ObjectId(id)))
 
 
 @app.route('/users', methods=['GET'])
